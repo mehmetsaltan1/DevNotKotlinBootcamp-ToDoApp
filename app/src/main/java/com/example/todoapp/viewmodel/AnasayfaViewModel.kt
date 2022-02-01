@@ -9,20 +9,20 @@ import com.example.todoapp.repo.YapilacaklarDaoRepository
 class AnasayfaViewModel(application: Application): AndroidViewModel(application) {
     var yapilacaklarListesi = MutableLiveData<List<Yapilacaklar>>()
 
-    val krepo = YapilacaklarDaoRepository(application)
+    val yrepo = YapilacaklarDaoRepository(application)
 
     init {
         yapilacaklariYukle()
-        yapilacaklarListesi = krepo.yapilacaklariGetir()
+        yapilacaklarListesi = yrepo.yapilacaklariGetir()
     }
 
     fun ara(aramaKelimesi: String) {
-        krepo.yapilacakAra(aramaKelimesi)
+        yrepo.yapilacakAra(aramaKelimesi)
     }
     fun sil(yapilacak_id: Int) {
-        krepo.yapilacakSil(yapilacak_id)
+        yrepo.yapilacakSil(yapilacak_id)
     }
     fun yapilacaklariYukle(){
-        krepo.tumYapilacaklariAl()
+        yrepo.tumYapilacaklariAl()
     }
 }
