@@ -15,19 +15,20 @@ import com.example.todoapp.viewmodel.AnasayfaVMF
 import com.example.todoapp.viewmodel.AnasayfaViewModel
 
 class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
-
     private lateinit var tasarim: FragmentAnasayfaBinding
     private lateinit var adapter: YapilacaklarAdapter
     private lateinit var viewModel : AnasayfaViewModel
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_anasayfa, container, false)
         tasarim.anasayfaFragment = this
         tasarim.anasayfaToolBarBaslik = "Yapılacaklar"
         (activity as AppCompatActivity).setSupportActionBar(tasarim.toolbarAnasayfa)
+
+
 
         viewModel.yapilacaklarListesi.observe(viewLifecycleOwner,{
             adapter = YapilacaklarAdapter(requireContext(),it,viewModel)
@@ -36,9 +37,11 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
 
         return tasarim.root
     }
+
     fun fabTikla(v: View) {
         Navigation.findNavController(v).navigate(R.id.anasayfaToKayitSayfa)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -46,8 +49,8 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
             AnasayfaVMF(requireActivity().application)
         }
         viewModel = tempViewModel
-
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_menu, menu)
 
@@ -71,7 +74,7 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
     override fun onResume() {
         super.onResume()
         viewModel.yapilacaklariYukle()
+    }
 
 
-    }
-    }
+}
