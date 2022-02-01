@@ -8,20 +8,22 @@ import com.example.todoapp.entity.Yapilacaklar
 
 
 @Database(entities = [Yapilacaklar::class], version = 1)
-abstract class Veritabani: RoomDatabase() {
+abstract class Veritabani : RoomDatabase() {
     abstract fun yapilacaklarDao(): YapilacaklarDao
 
     companion object {
         var INSTANCE: Veritabani? = null
-        fun veritabaniErisim(context: Context) : Veritabani?{
-            if (INSTANCE == null){
-                synchronized(Veritabani::class){
-                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+        fun veritabaniErisim(context: Context): Veritabani? {
+            if (INSTANCE == null) {
+                synchronized(Veritabani::class) {
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
                         Veritabani::class.java,
-                        "todoapp.sqlite").createFromAsset("todoapp.sqlite").build()
+                        "todoapp.sqlite"
+                    ).createFromAsset("todoapp.sqlite").build()
                 }
             }
-            return  INSTANCE
+            return INSTANCE
         }
     }
 }

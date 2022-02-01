@@ -11,7 +11,11 @@ import com.example.todoapp.fragment.AnasayfaFragmentDirections
 import com.example.todoapp.viewmodel.AnasayfaViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class YapilacaklarAdapter(var mContext: Context, var yapilacaklarListesi: List<Yapilacaklar>, var viewModel: AnasayfaViewModel) :
+class YapilacaklarAdapter(
+    var mContext: Context,
+    var yapilacaklarListesi: List<Yapilacaklar>,
+    var viewModel: AnasayfaViewModel
+) :
     RecyclerView.Adapter<YapilacaklarAdapter.CardTasarimTutucu>() {
 
     inner class CardTasarimTutucu(cardTasarimBinding: CardTasarimBinding) :
